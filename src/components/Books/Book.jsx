@@ -5,8 +5,8 @@ const Book = ({book}) => {
     return (
         <div className="border p-6 rounded-lg" id={id}>
             <div className="space-y-4">
-                <img src={bookImage} alt="" />
-                <p>{tag}</p>
+                <img className="w-full h-[400px] object-cover border rounded-lg" src={bookImage} alt="" />
+                <p ><span className="py-2 px-4 rounded-full bg-green-100 text-green-600 font-semibold">{tag}</span></p>
                 <h2>{bookName}</h2>
                 <p className="text-black/60">By : {writter}</p>
                 <hr /> 
