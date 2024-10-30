@@ -15,11 +15,6 @@ const Books = () => {
             {
                 books.map(book => <Book key={book.id} book={book}></Book>)
             }
-            {
-                books.map(book => <ol key={book.id}>
-                    <li>{book.bookName}</li>
-                </ol>)
-            }
         </div>
         </>
     );

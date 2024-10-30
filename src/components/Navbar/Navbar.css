@@ -1,18 +1,20 @@
 .item a.active{
-    border: 2px solid #23BE0A;
+    border: 1px solid #23BE0A;
     color: #23BE0A;
 }
 .item a{
     padding: 10px 15px;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     border-radius: 10px;
-}
-.btn a{
-    padding: 10px 16px;
-    border-radius: 10px;
-    border: 2px solid #23BE0A;
 }
 .btn a.active{
     background-color: #23BE0A;
     color: white;
+    border-radius: 8px;
+}
+@media screen and (max-width: 756px) {
+    .item a{
+        padding: 6px 10px;
+    }
+    
 }

@@ -5,10 +5,15 @@ import Home from './components/Home/Home.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Error from './components/Error/Error.jsx'
 import ListedBook from './components/ListedBook/ListedBook.jsx'
-import ReadsBook from './components/ReadBooks/ReadsBook.jsx'
 import SignIn from './components/SignIn/SignIn.jsx'
 import SignUp from './components/SignUp/SignUp.jsx'
 import BooksBanner from './components/BooksBanner/BooksBanner.jsx'
+import Fiction from './components/Fiction/Fiction.jsx'
+import ReadPages from './components/ReadBooks/ReadPages.jsx'
+import ReadBooks from './components/ListedBook/List/ReadBooks.jsx'
+import WishList from './components/ListedBook/List/WishList.jsx'
+
+
 const router = createBrowserRouter([
   {
     path:'/',
@@ -21,11 +26,21 @@ const router = createBrowserRouter([
       },
       {
         path:'/list',
-        element: <ListedBook></ListedBook>
+        element: <ListedBook></ListedBook>,
+        children:[
+          {
+            path: '/list/readBooks',
+            element: <ReadBooks></ReadBooks>
+          },
+          {
+            path: '/list/wishBooks',
+            element: <WishList></WishList>
+          }
+        ]
       },
       {
         path: '/read',
-        element: <ReadsBook></ReadsBook>
+        element: <ReadPages></ReadPages>
       },
       {
         path: '/signIn',
@@ -34,6 +49,16 @@ const router = createBrowserRouter([
       {
         path: '/signUp',
         element: <SignUp></SignUp>
+      }, 
+      {
+        path: '/fiction/:bookId',
+        loader: async ({params}) => {
+          const res = await fetch('Book.json')
+          const books = await res.json()
+          const book = books.find(b => b.id == params.bookId)
+          return book || null;
+        },
+        element: <Fiction></Fiction>
       }
     ]
   }
