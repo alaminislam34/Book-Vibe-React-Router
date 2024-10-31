@@ -1,26 +1,37 @@
 /* eslint-disable react/prop-types */
 
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
-const Book = ({book}) => {
-    const {bookImage, bookName, id, rating, tag, writter } = book;
-    return (
-        <div className="border p-6 rounded-lg" id={id}>
-            <div className="space-y-4">
-                <img className="w-full md:h-[400px] h-[350px] object-cover border rounded-lg" src={bookImage} alt="" />
-                <p ><span className="py-2 px-4 rounded-full bg-green-100 text-green-600 font-semibold">{tag}</span></p>
-                <h2>{bookName}</h2>
-                <p className="text-black/60">By : {writter}</p>
-                <hr /> 
-                <div className="flex justify-between items-center text-black/60">
-                    <NavLink to={`/fiction/${id}`}>
-                        Fiction
-                    </NavLink>
-                    <p>Rating {rating} ⭐</p>
-                </div>
+const Book = ({ book }) => {
+  const { bookImage, bookName, id, rating, tag, writter } = book;
+  return (
+    <Link to={`/fiction/${id}`}>
+      <section className="h-full">
+        <div className="card border shadow-xl h-full">
+          <figure className="p-6 bg-base-300 rounded-lg">
+            <img
+              className="w-[200px] h-[250px] object-cover border rounded-lg"
+              src={bookImage}
+              alt="Book"
+            />
+          </figure>
+          <div className="card-body p-4 space-y-2">
+            <h2 className="card-title text-base">
+              Tag
+              <div className="badge badge-secondary">{tag}</div>
+            </h2>
+            <h2 className="text-lg font-medium">{bookName}</h2>
+            <p className="text-black/60">By: {writter}</p>
+            <div className="divider divider-neutral"></div>
+            <div className="flex justify-between items-center text-black/60">
+              <p>Fiction</p>
+              <p className="text-end">Rating {rating} ⭐</p>
             </div>
+          </div>
         </div>
-    );
+      </section>
+    </Link>
+  );
 };
 
 export default Book;
