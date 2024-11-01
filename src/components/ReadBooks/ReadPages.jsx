@@ -16,16 +16,14 @@ const ReadPages = () => {
   useEffect(() => {
     const ReadPages = JSON.parse(localStorage.getItem("bookList")) || [];
     setReadBooks(ReadPages);
-  }, []); // খালি নির্ভরশীলতার তালিকা
+  }, []);
 
-  // Custom path function for TriangleBar
   const getPath = (x, y, width, height) => {
     return `M${x},${y + height} L${x + width / 2},${y} L${x + width},${
       y + height
     } Z`;
   };
 
-  // Custom shape for bars
   const TriangleBar = (props) => {
     const { fill, x, y, width, height } = props;
     return <path d={getPath(x, y, width, height)} stroke="none" fill={fill} />;

@@ -5,7 +5,7 @@ const Banner = () => {
         <div className="hero-content flex-col lg:flex-row-reverse m-4 md:m-6 lg:m-12">
           <img
             src="https://pngimg.com/d/book_PNG2111.png"
-            className="lg:w-2/5 w-2/3 md:w-2/4 mx-auto rounded-lg"
+            className="lg:w-2/5 w-2/3 md:w-2/4 mx-auto rounded-lg z-0"
           />
           <div className="space-y-4">
             <h1 className="text-5xl font-bold">
