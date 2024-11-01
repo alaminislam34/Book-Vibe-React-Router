@@ -37,11 +37,11 @@ const Navbar = () => {
   );
   return (
     <div
-      className={`duration-300 ease-in ${
+      className={`duration-300 ease-in z-50 ${
         isSticky
           ? "sticky top-0 left-0 bg-white/50 backdrop-blur-lg py-2 md:py-4 lg:py-6"
           : ""
-      } lg:py-12 md:py-8 py-4 z-50`}
+      } lg:py-12 md:py-8 py-4 `}
     >
       <header className="w-11/12 mx-auto flex justify-between items-center">
         <div className="flex flex-row gap-2 justify-center items-center">
