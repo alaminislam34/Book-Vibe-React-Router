@@ -1,7 +1,10 @@
 import { NavLink, useLoaderData, useParams } from "react-router-dom";
 import { FaArrowAltCircleLeft } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Fiction = () => {
+  const notify = () => toast("Wow so easy!");
   const books = useLoaderData();
   const { bookId } = useParams();
   const id = parseInt(bookId);
@@ -25,7 +28,17 @@ const Fiction = () => {
       existingBooks.push(book);
       localStorage.setItem("bookList", JSON.stringify(existingBooks));
     } else {
-      return alert("book has already selected..");
+      notify();
+    }
+  };
+  const handleAddWishListToLocalStore = (book) => {
+    const existingBooks = JSON.parse(localStorage.getItem("wishList")) || [];
+    const isStore = existingBooks.some((store) => store.id === book.id);
+    if (isStore) {
+      notify();
+    } else {
+      existingBooks.push(book);
+      localStorage.setItem("wishList", JSON.stringify(existingBooks));
     }
   };
 
@@ -93,7 +106,7 @@ const Fiction = () => {
               </button>
               <button
                 onClick={() => {
-                  handleAddToLocalStore(book);
+                  handleAddWishListToLocalStore(book);
                 }}
                 className="md:py-2 md:px-4 py-1.5 px-2.5 text-base md:text-lg rounded-lg text-[#23BE0A] hover:bg-[#23BE0A] hover:text-white font-semibold border-2 border-[#23BE0A] ml-4"
               >
@@ -105,7 +118,7 @@ const Fiction = () => {
       ) : (
         <div>Book is not founded</div>
       )}
-      ;
+      ; <ToastContainer />
     </div>
   );
 };

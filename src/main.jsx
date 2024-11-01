@@ -26,16 +26,6 @@ const router = createBrowserRouter([
       {
         path: "/list",
         element: <ListedBook></ListedBook>,
-        children: [
-          {
-            path: "/list",
-            element: <ReadBooks></ReadBooks>,
-          },
-          {
-            path: "/list/wishList",
-            element: <WishList></WishList>,
-          },
-        ],
       },
       {
         path: "/read",
